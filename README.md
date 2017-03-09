@@ -14,6 +14,8 @@ bilibili.tv has a ip limit
 > 
 each ip can send just 396 requests then you must delay about five minutes for another 396 requests
 > 
+for openwrt branch
+>
 
 
 
