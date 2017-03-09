@@ -1,9 +1,7 @@
-#spyderbilibili
+#spiderbilibili
 
 #coding=utf-8
 import spider
-import spider
-import table
 import sys
 
 reload(sys)
@@ -21,7 +19,7 @@ headers['Referer'] = "http://space.bilibili.com/2/"
 type = "POST"
 
 
-birthdataspyder = spider.SpyderObject("birthdata")
+birthdataspyder = spider.Spider("birthdata")
 
 
 mid = 33307722

@@ -1,9 +1,9 @@
-#spyderjobs
+#spiderjobs
 
 #coding=utf-8
 
 
-class SpyderJobsObject(object):
+class SpiderJobs(object):
     
     #classmemebervariables
     
@@ -16,7 +16,7 @@ class SpyderJobsObject(object):
     
     def AddOneJob(self,type,requesturl,headers,values):
         no = len(self.ListOfJobs)
-        job = SpyderJob(type,requesturl,headers,values,no)
+        job = SpiderJob(type,requesturl,headers,values,no)
         self.ListOfJobs.append(job)
         
         return True
@@ -45,7 +45,7 @@ class SpyderJobsObject(object):
  
  
  
-class SpyderJob(object):   
+class SpiderJob(object):   
     
     def __init__(self,type,requesturl,headers,values,no):
         self.Type = type

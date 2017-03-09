@@ -1,4 +1,4 @@
-#spyder
+#spider
 
 #coding=utf-8
 
@@ -11,20 +11,20 @@ import table
 import MySQLdb
 import birthdatatable
 
-class SpyderObject(object) :
+class Spider(object) :
     #classmembervariables
       
     #classmembermethod
     
     def __init__(self,tablename):
-        self.Jobs = spiderjobs.SpyderJobsObject()
+        self.Jobs = spiderjobs.SpiderJobs()
         self.JsonDatas = []
         #init mysql
         
         conn = MySQLdb.connect(host='localhost',port = 3306 ,user = 'root',passwd = 'root',db = 'testdb',charset = 'utf8')
         
         if tablename == "user" :
-            self.Table = table.TableObject(conn,tablename)
+            self.Table = table.Table(conn,tablename)
         
         elif tablename == "birthdata":
             self.Table = birthdatatable.BirthDataTable(conn,tablename)
@@ -94,7 +94,8 @@ class SpyderObject(object) :
                 
             else :
                 jsondata = self.JsonDatas.pop()
-                
+            
+            print self.Table.Name    
             self.Table.Insert(jsondata)
             
         else :
