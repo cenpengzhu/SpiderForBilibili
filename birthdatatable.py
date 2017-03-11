@@ -23,7 +23,7 @@ class BirthDataTable(Table):
         insertsql = insertsql + " ( mid ,jsondata ) values ( "
         tempflag = 0
         values = list()
-        values.append(jsondata['data']['mid'])
+        values.append(int(jsondata['data']['mid']))
         values.append(jsondata['data'])
                     
         tempflag = 0
@@ -47,7 +47,7 @@ class BirthDataTable(Table):
                     insertsql = insertsql + "'"+json.dumps(eachvalue,encoding='utf-8',ensure_ascii=False)+"'"
                     tempflag = 1
                 else :
-                    print(eachvalue)
+                   # print(eachvalue)
                     insertsql = insertsql + ' , '
                     insertsql = insertsql + "'"+json.dumps(eachvalue,encoding='utf-8',ensure_ascii=False)+"'"  
                       

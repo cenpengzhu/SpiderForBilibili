@@ -21,12 +21,12 @@ class Spider(object) :
         self.JsonDatas = []
         #init mysql
         
-        conn = MySQLdb.connect(host='localhost',port = 3306 ,user = 'root',passwd = 'root',db = 'testdb',charset = 'utf8')
+        conn = MySQLdb.connect(host='192.168.1.147',port = 3306 ,user = 'admin',passwd = 'passwordofcpz',db = 'testdb',charset = 'utf8')
         
         if tablename == "user" :
             self.Table = table.Table(conn,tablename)
         
-        elif tablename == "birthdata":
+        elif tablename == "birthdata1":
             self.Table = birthdatatable.BirthDataTable(conn,tablename)
             
         
@@ -42,7 +42,9 @@ class Spider(object) :
                 request = urllib2.Request(job.RequestUrl,data,job.Headers)
                 try :
                     
-                    print "request jos no %d"%job.NO
+                    print "request jos NO.%d mid:%d"%(job.NO,job.Values['mid'])
+                    #do not request too fast
+                    time.sleep(0.1)
                     response = urllib2.urlopen(request, data)
                     re_data = re_data = response.read()
                     
@@ -68,6 +70,7 @@ class Spider(object) :
                     print e.reason
                     print job.NO
                     self.Jobs.Done(job,0)
+                    time.sleep(3)
                     return False
                 else :
                     self.Jobs.Done(job)
@@ -95,7 +98,7 @@ class Spider(object) :
             else :
                 jsondata = self.JsonDatas.pop()
             
-            print self.Table.Name    
+            # print self.Table.Name    
             self.Table.Insert(jsondata)
             
         else :
@@ -139,7 +142,7 @@ def _decode_list(data):
     for item in data:
         if isinstance(item, unicode):
             item = item.encode('utf-8')
-            print item
+           # print item
         elif isinstance(item, list):
             item = _decode_list(item)
             
