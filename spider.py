@@ -21,13 +21,13 @@ class Spider(object) :
         self.JsonDatas = []
         #init mysql
         
-        conn = MySQLdb.connect(host='192.168.1.147',port = 3306 ,user = 'admin',passwd = 'passwordofcpz',db = 'testdb',charset = 'utf8')
+        conn = MySQLdb.connect(host='192.168.1.147',port = 3306 ,user = 'admin',passwd = 'passwordofcpz',db = 'bilibilidb',charset = 'utf8')
         
         if tablename == "user" :
-            self.Table = table.Table(conn,tablename)
+            self.Table = table.Table(conn,tablename,'bilibilidb')
         
-        elif tablename == "birthdata1":
-            self.Table = birthdatatable.BirthDataTable(conn,tablename)
+        elif tablename == "birthuserdata":
+            self.Table = birthdatatable.BirthDataTable(conn,tablename,'bilibilidb')
             
         
         
@@ -57,8 +57,11 @@ class Spider(object) :
                    # print jsondata
                     #print jsondata['status']
                     if jsondata['status'] == True:
-                        if self.Table.TableName == 'birthdata' :
+                        if self.Table.TableName == 'birthuserdata' :
+                           # print 1
                             jsondata = _decode_dict(jsondata)
+                           # print jsondata['data']['sign']
+                           # jsondata['data']['sign'].replace("'",'"')
                             self.JsonDatas.append(jsondata)
                         
                         else :  

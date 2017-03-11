@@ -66,6 +66,7 @@ class Table(object):
         except :
             
             #print e.args[1]
+            print 'inserterror: %s'%self.InsertSql
             self.Conn.rollback()
             
             return False

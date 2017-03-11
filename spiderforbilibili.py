@@ -43,15 +43,15 @@ headers['Referer'] = "http://space.bilibili.com/2/"
 type = "POST"
 
 
-birthdataspider = spider.Spider("birthdata1")
+birthdataspider = spider.Spider("birthuserdata")
 
-mid = 1
+mid = 1805
 requestno = 0
 oldIpList = []
 oldIpList.append(GetIp('pppoe-wan'))
 print oldIpList
 
-while mid < 2 :
+while mid < 10000 :
     if requestno > 190 :
         while True :
             if Redial() :
@@ -59,7 +59,7 @@ while mid < 2 :
                 break
             time.sleep(1)
         while True :
-            time.sleep(5)
+            time.sleep(10)
             newIp = GetIp('pppoe-wan')
             if newIp != '' :
                 print"newIp is %s"%newIp
