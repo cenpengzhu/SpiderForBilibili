@@ -102,7 +102,9 @@ class Spider(object) :
                 jsondata = self.JsonDatas.pop()
             
             # print self.Table.Name    
-            self.Table.Insert(jsondata)
+            # self.Table.Insert(jsondata)
+            if self.Table.Insert(jsondata) == False :
+                self.Jobs.ListOfFails.append(jsondata['data']['mid'])
             
         else :
             

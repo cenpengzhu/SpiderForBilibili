@@ -45,13 +45,13 @@ type = "POST"
 
 birthdataspider = spider.Spider("birthuserdata")
 
-mid = 1805
+mid = 11555
 requestno = 0
 oldIpList = []
 oldIpList.append(GetIp('pppoe-wan'))
 print oldIpList
 
-while mid < 10000 :
+while mid < 20000 :
     if requestno > 190 :
         while True :
             if Redial() :
@@ -59,7 +59,7 @@ while mid < 10000 :
                 break
             time.sleep(1)
         while True :
-            time.sleep(10)
+            time.sleep(15)
             newIp = GetIp('pppoe-wan')
             if newIp != '' :
                 print"newIp is %s"%newIp
@@ -71,8 +71,8 @@ while mid < 10000 :
             continue
         else :
             oldIpList.append(newIp)
-            if len(oldIpList) > 500 :
-               oldIpList.pop(oldIpList[0])
+            if len(oldIpList) > 20 :
+               oldIpList.pop(0)
             requestno = 0
 
     values = dict()
@@ -89,7 +89,7 @@ while mid < 10000 :
     requestno = requestno + 1
 
 
-
+print birthdataspider.Jobs.ListOfFails
 
 
 

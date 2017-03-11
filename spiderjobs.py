@@ -12,17 +12,19 @@ class SpiderJobs(object):
     def __init__(self):
         self.ListOfJobs = []
         self.CurrentJob = 0
+        self.ListOfFails = []
              
     
     def AddOneJob(self,type,requesturl,headers,values):
         no = len(self.ListOfJobs)
-        job = SpiderJob(type,requesturl,headers,values,no)
+        job = SpiderJob(type,requesturl,headers,values,no+self.CurrentJob)
         self.ListOfJobs.append(job)
         
         return True
          
     
     def PopOneJob(self):
+        self.CurrentJob = self.CurrentJob + 1
         return self.ListOfJobs.pop(0)
 
 
