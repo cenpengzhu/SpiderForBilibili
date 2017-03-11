@@ -23,7 +23,7 @@ class SpiderJobs(object):
          
     
     def PopOneJob(self):
-        return self.ListOfJobs.pop(self.ListOfJobs[0])
+        return self.ListOfJobs.pop(0)
 
 
 
